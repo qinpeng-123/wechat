@@ -1,0 +1,6 @@
+#    Ç°¶ËÄ£°åÅäÖÃ
+spring:
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+

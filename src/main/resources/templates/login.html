@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>WeUI测试</title>
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <!--jquery需要在前面-->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<!--    <script th:inline="javascript">-->
+<!--        /*<![CDATA[*/-->
+<!--        //判断session是否存在如果存在表示已经登录-->
+<!--        var openid=/*[[${session.openid}]]*/   &#45;&#45;获取session中的值-->
+<!--        if (openid != null){-->
+<!--            window.location.href = './home';-->
+<!--        }-->
+<!--        /*]]>*/-->
+
+<!--    </script>-->
+
+</head>
+<body>
+<div class="weui-cells__title" style="text-align: center">用户登录</div>
+<form action="/login">
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">账户</label></div>
+            <div class="weui-cell__bd weui-cell_primary">
+                <input id="phone" name="phone" type="text" class="weui-input" placeholder="手机号码"/>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+            <div class="weui-cell__bd weui-cell_primary">
+                <input id="password" name="password" type="text" class="weui-input" placeholder="密码"/>
+            </div>
+        </div>
+        <!--    <div class="weui-cell weui-cell_vcode">-->
+        <!--        <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>-->
+        <!--        <div class="weui-cell__bd weui-cell_primary">-->
+        <!--            <input type="number" class="weui-input">-->
+        <!--        </div>-->
+        <!--        <div class="weui-cell__ft">![](service/validate_code/create)</div>-->
+        <!--    </div>-->
+    </div>
+    <div class="weui-cells__tips"></div>
+    <div class="weui-btn-area">
+        <button class="weui-btn weui-btn_primary" onclick="return login()">登录</button>
+    </div>
+</form>
+
+<script>
+    function login() {
+        $.ajax({
+            url: "./login",
+            type:"POST",
+            data: {"phone": $('#phone').val(), "password": $('#password').val()},
+            dataType: "text",
+            success: function (res) {
+                console.log(res)
+                if (res === 'success') {
+                    $.toptip('登录成功', 'success');
+                    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66615fffa8f7244e&redirect_uri=http://qpsj.xiaomy.net/getOpenId&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+                    //登录成功后，进行网页授权获取code以及openid
+                    window.location.href = url;
+
+                } else {
+                    $.toptip('用户名或密码错误', 'error');
+                }
+            },
+            error: function (res) {
+                console.log(res)
+                $.toast("系统错误", "text");
+            }
+        });
+        return false;
+    }
+</script>
+</body>
+</html>

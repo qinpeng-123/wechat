@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>WeUI测试</title>
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        /*居中*/
+        #user-picture {
+            margin: 10px auto
+        }
+
+        /*用户头像样式*/
+        #user-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+        }
+
+        .login:link {
+            color: black;
+        }
+
+        .login:hover {
+            color: red;
+        }
+
+        .login:visited {
+            color: black;
+        }
+
+        .login:active {
+            color: red;
+        }
+
+        .login {
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+
+
+
+        .round_icon{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .log{
+            background: url("../static/images/background_image.png") 0 -20px no-repeat #fff;
+            background-size: 100% 143px;
+            height: 123px;
+        }
+
+        .backcolor{
+            background: white;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="weui-tab backcolor">
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item">
+            <!-- 引用对应的“菜单项我页面-->
+            <div th:replace="mypage :: mypage"></div>
+        </div>
+        <div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <div th:replace="article :: article"></div>
+        </div>
+        <div id="tab3" class="weui-tab__bd-item">
+
+        </div>
+        <div id="tab4" class="weui-tab__bd-item">
+            <h1>页面四</h1>
+        </div>
+    </div>
+
+    <div class="weui-tabbar">
+        <a href="#tab4" class="weui-tabbar__item">
+            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon_nav_button.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">周边商城</p>
+        </a>
+        <a href="#tab2" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon_nav_msg.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">活动公告</p>
+        </a>
+        <a href="#tab3" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon_nav_article.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我要报修</p>
+        </a>
+        <a href="#tab1" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon_nav_cell.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我</p>
+        </a>
+    </div>
+</div>
+</body>
+<script>
+    function help() {
+        $.toast("客服号码", "text");
+    }
+</script>
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/city-picker.min.js"></script>
+</html>

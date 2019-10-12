@@ -11,15 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
-    private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = {"/index", "/home"}, method = RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response) {
         return "index";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String home(HttpServletRequest request, HttpServletResponse response) {
-        return "index";
-    }
+
+
+
 }

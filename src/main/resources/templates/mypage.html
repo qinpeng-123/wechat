@@ -15,8 +15,8 @@
 
     <!--            <div id="user-picture"><img src="../static/images/user.png" th:src="@{/static/images/user.png}"-->
     <!--                                        alt="点击查看用户信息" style="width: 100px" ; height="100px"></div>-->
-    <div th:switch="${ session.openid != null }">
-        <div th:case="true" th:text="'欢迎您'+${session.openid}"
+    <div th:switch="${ session.user != null }">
+        <div th:case="true" th:text="'欢迎您'+${session.user.getNickname()}"
              style="text-align: center; margin-top: 50px"></div>
          <!--没有登录-->
         <div th:case="false">
@@ -27,7 +27,7 @@
     <div class="weui-cells">
         <!--没登录则跳转到登录界面-->
         <a class="weui-cell weui-cell_access" href="#"
-           th:href="${session.openid != null} ? @{/user} : @{/login}">
+           th:href="${session.user != null} ? @{/user} : @{/login}">
             <div class="weui-cell__bd">
                 <p>我的资料</p>
             </div>
@@ -35,7 +35,7 @@
             </div>
         </a>
         <a class="weui-cell weui-cell_access" href="#"
-           th:href="${session.openid != null} ? @{/user} : @{/login}">
+           th:href="${session.user != null} ? @{/user} : @{/login}">
             <div class="weui-cell__bd">
                 <p>我的报修</p>
             </div>
@@ -66,7 +66,7 @@
             </div>
         </a>
         <!--当没有登录的时候不显示退出登录按钮-->
-        <div th:switch="${session.openid != null }">
+        <div th:switch="${session.user != null }">
             <div th:case="true" style="margin-top: 50px">
                 <a href="/loginOut" class="weui-btn weui-btn_primary">退出登录</a>
             </div>

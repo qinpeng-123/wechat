@@ -63,7 +63,8 @@
                 console.log(res)
                 if (res === 'success') {
                     $.toptip('登录成功', 'success');
-                    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66615fffa8f7244e&redirect_uri=http://qpsj.xiaomy.net/getOpenId&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+                    //微信网页授权获取用户信息
+                    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66615fffa8f7244e&redirect_uri=http://qpsj.xiaomy.net/getOAuth2UserInfo&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
                     //登录成功后，进行网页授权获取code以及openid
                     window.location.href = url;
 

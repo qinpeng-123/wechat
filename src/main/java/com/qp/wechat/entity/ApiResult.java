@@ -11,6 +11,8 @@ public class ApiResult<T> implements Serializable {
 
     public static final String SUCCESS_DESCRIPTION = "成功";
 
+    public static final String FAILE_DESCRIPTION = "失败";
+
     public static final int SUCCESS_RESULT = 0;
 
     public static final int FAIL_RESULT = -1;

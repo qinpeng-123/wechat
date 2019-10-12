@@ -1,8 +1,14 @@
 package com.qp.wechat.inc;
 
-import org.weixin4j.Configuration;
 
 public class Const {
-    public final static String WEI_XIN_APP_ID = Configuration.getProperty("weixin4j.oauth.appid");
-    public final static String WEI_XIN_SECRET = Configuration.getProperty("weixin4j.oauth.secret");
+
+    /**
+     * 获得accesstoken url
+     */
+    public final static String WEI_XIN_ACCESS_TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code";
+    /**
+     * 通过accesstoken 拉取用户信息url
+     */
+    public final static String WEI_XIN_USERINFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN";
 }
